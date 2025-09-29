@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodLover - Gestionnaire de Recettes Personnel</title>
     <meta name="description" content="Organisez et gérez vos recettes favorites avec FoodLover">
+    <meta name="author" content="Baya AMELLAL PAYAN">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/images/logo-foodlover.svg">
 </head>
@@ -24,13 +25,108 @@
     
     <main class="main">
         <div class="container">
-            <!-- Contenu principal à développer -->
+            <!-- Formulaire d'ajout de recettes -->
+            <section class="recipe-form">
+                <h2>Ajouter une nouvelle recette</h2>
+                <form id="recipeForm" novalidate>
+                    <div class="form-group">
+                        <label for="recipeName">Nom de la recette <span class="required">*</span></label>
+                        <input type="text" id="recipeName" name="recipeName" required 
+                               placeholder="Ex: Tarte aux pommes" 
+                               aria-describedby="recipeName-error">
+                        <span id="recipeName-error" class="error-message" aria-live="polite"></span>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="recipeCategory">Catégorie <span class="required">*</span></label>
+                            <select id="recipeCategory" name="recipeCategory" required 
+                                    aria-describedby="recipeCategory-error">
+                                <option value="">-- Choisir une catégorie --</option>
+                                <option value="entree">🥗 Entrée</option>
+                                <option value="plat">🍽️ Plat principal</option>
+                                <option value="dessert">🍰 Dessert</option>
+                                <option value="boisson">🥤 Boisson</option>
+                            </select>
+                            <span id="recipeCategory-error" class="error-message" aria-live="polite"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recipeTime">Temps de préparation</label>
+                            <input type="number" id="recipeTime" name="recipeTime" 
+                                   min="1" max="600" placeholder="30" 
+                                   aria-describedby="recipeTime-help">
+                            <small id="recipeTime-help" class="help-text">En minutes</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recipeIngredients">Ingrédients <span class="required">*</span></label>
+                        <textarea id="recipeIngredients" name="recipeIngredients" required 
+                                  rows="5" placeholder="- 3 œufs&#10;- 250g de farine&#10;- 200ml de lait&#10;- 1 pincée de sel"
+                                  aria-describedby="recipeIngredients-error recipeIngredients-help"></textarea>
+                        <small id="recipeIngredients-help" class="help-text">Un ingrédient par ligne</small>
+                        <span id="recipeIngredients-error" class="error-message" aria-live="polite"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recipeSteps">Étapes de préparation <span class="required">*</span></label>
+                        <textarea id="recipeSteps" name="recipeSteps" required 
+                                  rows="6" placeholder="1. Préchauffer le four à 180°C&#10;2. Dans un saladier, battre les œufs&#10;3. Ajouter la farine progressivement..."
+                                  aria-describedby="recipeSteps-error recipeSteps-help"></textarea>
+                        <small id="recipeSteps-help" class="help-text">Numérotez chaque étape</small>
+                        <span id="recipeSteps-error" class="error-message" aria-live="polite"></span>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            ➕ Ajouter la recette
+                        </button>
+                        <button type="reset" class="btn-secondary">
+                            🔄 Effacer le formulaire
+                        </button>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Barre de recherche et filtres -->
+            <section class="recipe-filters">
+                <h2>Rechercher dans mes recettes</h2>
+                <div class="filters-row">
+                    <div class="search-group">
+                        <label for="searchInput" class="sr-only">Rechercher une recette</label>
+                        <input type="search" id="searchInput" placeholder="🔍 Rechercher par nom ou ingrédient..." 
+                               aria-label="Rechercher une recette">
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterCategory" class="sr-only">Filtrer par catégorie</label>
+                        <select id="filterCategory" aria-label="Filtrer par catégorie">
+                            <option value="">Toutes les catégories</option>
+                            <option value="entree">🥗 Entrées</option>
+                            <option value="plat">🍽️ Plats</option>
+                            <option value="dessert">🍰 Desserts</option>
+                            <option value="boisson">🥤 Boissons</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Liste des recettes -->
+            <section class="recipe-list">
+                <h2>Mes recettes <span id="recipeCount" class="count">(0)</span></h2>
+                <div id="recipesContainer" class="recipes-grid">
+                    <div class="empty-state">
+                        <p>👋 Aucune recette pour le moment</p>
+                        <p>Ajoutez votre première recette ci-dessus !</p>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
     
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 FoodLover - Votre passion culinaire digitalisée</p>
+            <p>&copy; 2025 FoodLover - Développé par Baya AMELLAL PAYAN</p>
         </div>
     </footer>
     
